@@ -1,0 +1,83 @@
+body{
+    /* background-color: red; */
+}
+
+.info-cards{
+    height:200px;
+    width: auto;
+    /* background-color: darkgray; */
+    border-radius: 1rem;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    padding: 2rem;
+    margin-bottom: 1rem;
+    color: #fff;
+    
+}
+.info-cards-data{
+    padding-left: 1.5rem;
+}
+.temp-card{
+background: linear-gradient(-45deg, rgba(214,0,0), rgba(214,0,0,0.65));
+border: 2px solid  rgba(214,0,0);
+}
+.humidity-card{
+    background: linear-gradient(-45deg, rgba(23, 155, 255), rgba(23, 155, 255,0.65));
+    border: 2px solid  rgba(23, 155, 255);
+}
+.light-status-card{
+    background: linear-gradient(-45deg, rgba(255, 222, 30), rgba(255, 222, 30,0.65));
+    border: 2px solid  rgba(255, 222, 30);
+}
+.data-filter{
+    margin: 1rem;
+}
+.date-container{
+    border: 1px solid #050505; 
+    border-radius: 10px; 
+}
+.date-label{
+
+    /* background-color: red; */
+    text-align: left;
+    /* padding-right:3rem; */
+    /* font-weight: bold; */
+    margin-right:0.5rem; 
+}
+.date-field{
+    text-align: right;
+    padding-left: 1rem;
+}
+.date-filter-submit{
+    color:#fff;
+    /* margin:0.5rem; */
+}
+.data-card{
+    height:150px;
+    width: auto;
+    background-color: darkgray;
+    border-radius: 1rem;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    padding: 2rem;
+    margin-bottom: 1rem;
+    color: #fff;
+}
+
+input[type="date"]{
+    display:block;
+    -webkit-appearance: textfield;
+    -moz-appearance: textfield;
+    min-height: 1.2em;
+    /* background-color: #0080ff; */
+    /* padding: 15px; */
+    /* transform: translate(-50%,-50%); */
+    /* font-family: "Roboto Mono",monospace; */
+    /* color: #000; */
+    /* font-size: 18px; */
+    border: None;
+    /* size: 1rem; */
+    /* outline: none; */
+    /* border-radius: 5px; */
+    height: 2.5rem;
+}

@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='/css/style.css') }}">
+    <link rel="stylesheet" href="../static/css/style.css">
+    <script type="text/javascript">
+        var hydro_data_TEMP_HUMIDITY = {{page_data.temp_humidity_data|tojson|safe}};
+        var start_date = {{page_data.start_date|tojson|safe}};
+    </script>
+    <script type="module" src="{{ url_for('static', filename='/js/hydro_data.js') }}"></script>
+    <script type="module" src="../static/js/hydro_data.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.min.js" integrity="sha512-L0Shl7nXXzIlBSUUPpxrokqq4ojqgZFQczTYlGjzONGTDAcLremjwaWv5A+EDLnxhQzY5xUZPWLOLqYRkY0Cbw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js" integrity="sha512-CQBWl4fJHWbryGE+Pc7UAxWMUMNMWzWxF4SQo9CgkJIN1kx6djDQZjh3Y8SZ1d+6I+1zze6Z7kHXO7q3UyZAWw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/helpers.min.js" integrity="sha512-JG3S/EICkp8Lx9YhtIpzAVJ55WGnxT3T6bfiXYbjPRUoN9yu+ZM+wVLDsI/L2BWRiKjw/67d+/APw/CDn+Lm0Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+
+
+
+    <title>Greenhouse</title>
+
+</head>
+<body>
+    
+
+    <div class="container">
+        <header class="pb-3 mb-4 border-bottom">
+            <a href="/" class="d-flex align-items-center text-dark text-decoration-none">
+                <!-- <svg xmlns="http://www.w3.org/2000/svg" width="40" height="32" class="me-2" viewBox="0 0 118 94" role="img"><title>Bootstrap</title><path fill-rule="evenodd" clip-rule="evenodd" d="M24.509 0c-6.733 0-11.715 5.893-11.492 12.284.214 6.14-.064 14.092-2.066 20.577C8.943 39.365 5.547 43.485 0 44.014v5.972c5.547.529 8.943 4.649 10.951 11.153 2.002 6.485 2.28 14.437 2.066 20.577C12.794 88.106 17.776 94 24.51 94H93.5c6.733 0 11.714-5.893 11.491-12.284-.214-6.14.064-14.092 2.066-20.577 2.009-6.504 5.396-10.624 10.943-11.153v-5.972c-5.547-.529-8.934-4.649-10.943-11.153-2.002-6.484-2.28-14.437-2.066-20.577C105.214 5.894 100.233 0 93.5 0H24.508zM80 57.863C80 66.663 73.436 72 62.543 72H44a2 2 0 01-2-2V24a2 2 0 012-2h18.437c9.083 0 15.044 4.92 15.044 12.474 0 5.302-4.01 10.049-9.119 10.88v.277C75.317 46.394 80 51.21 80 57.863zM60.521 28.34H49.948v14.934h8.905c6.884 0 10.68-2.772 10.68-7.727 0-4.643-3.264-7.207-9.012-7.207zM49.948 49.2v16.458H60.91c7.167 0 10.964-2.876 10.964-8.281 0-5.406-3.903-8.178-11.425-8.178H49.948z" fill="currentColor"></path></svg> -->
+                <span class="fs-2">Greenhouse</span>
+            </a>
+        </header>
+        <div class="d-flex flex-xl-row flex-column justify-content-between">
+            <!-- Tempriture card -->
+            <!-- Tempriture card -->
+            <!-- Tempriture card -->
+            <div class="info-cards flex-fill d-flex align-items-stretch temp-card">
+                <div class="align-self-center">
+                    <!-- <div class="d-"> -->
+                    <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor" class="bi bi-thermometer-half" viewBox="0 0 16 16">
+                        <path d="M9.5 12.5a1.5 1.5 0 1 1-2-1.415V6.5a.5.5 0 0 1 1 0v4.585a1.5 1.5 0 0 1 1 1.415"/>
+                        <path d="M5.5 2.5a2.5 2.5 0 0 1 5 0v7.55a3.5 3.5 0 1 1-5 0zM8 1a1.5 1.5 0 0 0-1.5 1.5v7.987l-.167.15a2.5 2.5 0 1 0 3.333 0l-.166-.15V2.5A1.5 1.5 0 0 0 8 1"/>
+                    </svg>
+                <!-- </div> -->
+                </div>
+                <div class="d-flex flex-column info-cards-data align-items-stretch">
+                    <h3>TEMPERATURE</h3>
+                    <h5>{{ page_data.temp }}&degC</h5>
+                </div>
+            </div>
+            <!-- End of Tempriture card -->
+            <!-- End of Tempriture card -->
+            <!-- End of Tempriture card -->
+            
+            <!-- Humidity card -->
+            <!-- Humidity card -->
+            <!-- Humidity card -->
+            <div class="info-cards flex-fill d-flex align-items-stretch humidity-card">
+                <div class="align-self-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor" class="bi bi-moisture" viewBox="0 0 16 16">
+                        <path d="M13.5 0a.5.5 0 0 0 0 1H15v2.75h-.5a.5.5 0 0 0 0 1h.5V7.5h-1.5a.5.5 0 0 0 0 1H15v2.75h-.5a.5.5 0 0 0 0 1h.5V15h-1.5a.5.5 0 0 0 0 1h2a.5.5 0 0 0 .5-.5V.5a.5.5 0 0 0-.5-.5zM7 1.5l.364-.343a.5.5 0 0 0-.728 0l-.002.002-.006.007-.022.023-.08.088a29 29 0 0 0-1.274 1.517c-.769.983-1.714 2.325-2.385 3.727C2.368 7.564 2 8.682 2 9.733 2 12.614 4.212 15 7 15s5-2.386 5-5.267c0-1.05-.368-2.169-.867-3.212-.671-1.402-1.616-2.744-2.385-3.727a29 29 0 0 0-1.354-1.605l-.022-.023-.006-.007-.002-.001zm0 0-.364-.343zm-.016.766L7 2.247l.016.019c.24.274.572.667.944 1.144.611.781 1.32 1.776 1.901 2.827H4.14c.58-1.051 1.29-2.046 1.9-2.827.373-.477.706-.87.945-1.144zM3 9.733c0-.755.244-1.612.638-2.496h6.724c.395.884.638 1.741.638 2.496C11 12.117 9.182 14 7 14s-4-1.883-4-4.267"/>
+                    </svg>
+                </div>
+                <div class="d-flex flex-column info-cards-data align-items-start">
+                    <h3>HUMIDITY</h3>
+                    <h5>{{ page_data.humidity }}%</h5>
+                </div>
+            </div>
+            <!-- End of Humidity card -->
+            <!-- End of Humidity card -->
+            <!-- End of Humidity card -->
+
+
+            <!-- Lighting card -->
+            <!-- Lighting card -->
+            <!-- Lighting card -->
+            <div class="info-cards flex-fill d-flex align-items-stretch light-status-card">
+                <div class="align-self-center">
+                    {% if page_data.light_status %}
+                        <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor" class="bi bi-lightbulb-fill" viewBox="0 0 16 16">
+                            <path d="M2 6a6 6 0 1 1 10.174 4.31c-.203.196-.359.4-.453.619l-.762 1.769A.5.5 0 0 1 10.5 13h-5a.5.5 0 0 1-.46-.302l-.761-1.77a2 2 0 0 0-.453-.618A5.98 5.98 0 0 1 2 6m3 8.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1l-.224.447a1 1 0 0 1-.894.553H6.618a1 1 0 0 1-.894-.553L5.5 15a.5.5 0 0 1-.5-.5"/>
+                        </svg>
+                    {% else %}
+                        <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor" class="bi bi-lightbulb" viewBox="0 0 16 16">
+                            <path d="M2 6a6 6 0 1 1 10.174 4.31c-.203.196-.359.4-.453.619l-.762 1.769A.5.5 0 0 1 10.5 13a.5.5 0 0 1 0 1 .5.5 0 0 1 0 1l-.224.447a1 1 0 0 1-.894.553H6.618a1 1 0 0 1-.894-.553L5.5 15a.5.5 0 0 1 0-1 .5.5 0 0 1 0-1 .5.5 0 0 1-.46-.302l-.761-1.77a2 2 0 0 0-.453-.618A5.98 5.98 0 0 1 2 6m6-5a5 5 0 0 0-3.479 8.592c.263.254.514.564.676.941L5.83 12h4.342l.632-1.467c.162-.377.413-.687.676-.941A5 5 0 0 0 8 1"/>
+                        </svg>
+                    {% endif %}
+                </div>
+                <div class="d-flex flex-column info-cards-data align-items-start">
+                    <h3>CURRENT LIGHT STATUS</h3>
+                    {% if page_data.light_status %}
+                        <h5>ON</h5>
+                    {% else %}
+                        <h5>OFF</h5>
+                    {% endif %}
+                        
+                </div>
+            </div>
+            <!-- End of Lighting card -->
+            <!-- End of Lighting card -->
+            <!-- End of Lighting card -->
+        </div>
+
+
+
+
+        <form method = "POST">
+            <div class="row align-items-center data-filter">
+                <div class="col-lg-5"></div>
+                <div class="col-lg-3">
+                    <div class="d-flex justify-content-lg-around align-items-center date-container">
+                        <div class="date-label">Date</div>
+                        <div class="date-field"><input type="date" class="form-control" placeholder="date-from" aria-label="date-from" id="date-from" name="date-from"></div>
+                    </div>
+                </div>
+                <!-- <div class="col-lg-3">
+                    <div class="d-flex justify-content-lg-around align-items-center date-container">
+                        <div class="date-label">Date To</div>
+                        <div class="date-field"><input type="date" class="form-control" placeholder="date-to" aria-label="date-to" id="date-to"></div>
+                    </div>
+                </div> -->
+                
+                <div class="col-lg-1">
+                    <button type="submit" class="btn btn-info date-filter-submit">Apply</button>
+                </div>
+            </div>
+        </form>
+
+
+            <div class="d-flex flex-md-row flex-column justify-content-between">
+                <div class="data-card" id="max-temp">
+                    Max Temperature: -
+                </div>
+                <div class="data-card" id="min-temp">
+                    Min Temperature: -
+                </div>
+                <div class="data-card" id="ave-temp">
+                    Ave Temperature: -
+                </div>
+                <div class="data-card" id="max-humidity">
+                    Max Humidity: -
+                </div>
+                <div class="data-card" id="min-humidity">
+                    Min Humidity: -
+                </div>
+                <div class="data-card" id="ave-humidity">
+                    Ave Humidity: -
+                </div>
+                
+            </div>
+        <div class="row">
+            <canvas class="d-flex" id="hydroDataChart"></canvas>
+        </div>
+        
+          
+    
+
+    </div> <!--end of container-->
+
+
+
+   
+        
+
+        
+
+
+
+
+</body>
+</html>
